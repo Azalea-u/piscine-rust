@@ -12,7 +12,7 @@ fn has_won(player: char, table: &[[char; 3]; 3]) -> bool {
     horizontal(player, table) || vertical(player, table) || diagonals(player, table)
 }
 
-fn horizontal(player: char, table: &[[char; 3]; 3]) -> bool {
+pub fn horizontal(player: char, table: &[[char; 3]; 3]) -> bool {
     for row in table {
         if (0..3).all(|col| row[col] == player) {
             return true;
@@ -21,7 +21,7 @@ fn horizontal(player: char, table: &[[char; 3]; 3]) -> bool {
     false
 }
 
-fn vertical(player: char, table: &[[char; 3]; 3]) -> bool {
+pub fn vertical(player: char, table: &[[char; 3]; 3]) -> bool {
     for col in 0..3 {
         if (0..3).all(|row| table[row][col] == player) {
             return true;
@@ -30,7 +30,7 @@ fn vertical(player: char, table: &[[char; 3]; 3]) -> bool {
     false
 }
 
-fn diagonals(player: char, table: &[[char; 3]; 3]) -> bool {
+pub fn diagonals(player: char, table: &[[char; 3]; 3]) -> bool {
     let mut main_diagonal = true;
     let mut anti_diagonal = true;
     for i in 0..3 {
