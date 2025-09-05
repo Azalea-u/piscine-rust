@@ -9,10 +9,10 @@ pub fn tic_tac_toe(table: [[char; 3]; 3]) -> String {
 }
 
 fn has_won(player: char, table: &[[char; 3]; 3]) -> bool {
-    check_rows(player, table) || check_columns(player, table) || check_diagonals(player, table)
+    horizontal(player, table) || vertical(player, table) || diagonals(player, table)
 }
 
-fn check_rows(player: char, table: &[[char; 3]; 3]) -> bool {
+fn horizontal(player: char, table: &[[char; 3]; 3]) -> bool {
     for row in table {
         if (0..3).all(|col| row[col] == player) {
             return true;
@@ -21,7 +21,7 @@ fn check_rows(player: char, table: &[[char; 3]; 3]) -> bool {
     false
 }
 
-fn check_columns(player: char, table: &[[char; 3]; 3]) -> bool {
+fn vertical(player: char, table: &[[char; 3]; 3]) -> bool {
     for col in 0..3 {
         if (0..3).all(|row| table[row][col] == player) {
             return true;
@@ -30,7 +30,7 @@ fn check_columns(player: char, table: &[[char; 3]; 3]) -> bool {
     false
 }
 
-fn check_diagonals(player: char, table: &[[char; 3]; 3]) -> bool {
+fn diagonals(player: char, table: &[[char; 3]; 3]) -> bool {
     let mut main_diagonal = true;
     let mut anti_diagonal = true;
     for i in 0..3 {
