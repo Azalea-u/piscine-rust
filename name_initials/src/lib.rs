@@ -1,7 +1,14 @@
 pub fn initials(names: Vec<&str>) -> Vec<String> {
     let mut initials = Vec::new();
     for name in names {
-        initials.push(name.chars().collect::<Vec<char>>()[0].to_string() + ".");
+        let mut initial = String::new();
+        for word in name.split_whitespace() {
+            initial.push( word.chars().next().unwrap());
+            initial.push('.');
+            initial.push(' ');
+        }
+        initial.pop();
+        initials.push(initial);
     }
     initials
 }
