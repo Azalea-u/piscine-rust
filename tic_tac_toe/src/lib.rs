@@ -8,7 +8,7 @@ pub fn tic_tac_toe(table: [[char; 3]; 3]) -> String {
     }
 }
 
-fn has_won(player: char, table: &[[char; 3]; 3]) -> bool {
+fn has_won(player: char, table: [[char; 3]; 3]) -> bool {
     horizontal(player, table) || vertical(player, table) || diagonals(player, table)
 }
 
@@ -21,7 +21,7 @@ pub fn horizontal(player: char, table: &[[char; 3]; 3]) -> bool {
     false
 }
 
-pub fn vertical(player: char, table: &[[char; 3]; 3]) -> bool {
+pub fn vertical(player: char, table: [[char; 3]; 3]) -> bool {
     for col in 0..3 {
         if (0..3).all(|row| table[row][col] == player) {
             return true;
@@ -30,7 +30,7 @@ pub fn vertical(player: char, table: &[[char; 3]; 3]) -> bool {
     false
 }
 
-pub fn diagonals(player: char, table: &[[char; 3]; 3]) -> bool {
+pub fn diagonals(player: char, table: [[char; 3]; 3]) -> bool {
     let mut main_diagonal = true;
     let mut anti_diagonal = true;
     for i in 0..3 {
