@@ -31,7 +31,5 @@ pub fn do_operations(s: &mut [String]) {
             '-' => *elem = (num1 - num2).to_string(),
             _ => {}
         }
-
-    
     }
 }
