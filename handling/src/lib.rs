@@ -11,3 +11,12 @@ pub fn open_or_create<P: AsRef<Path>>(path: &P, content: &str) {
         panic!("Failed to write to file: {}", error);
     }
 }
+
+
+pub fn check_ms(message: &str) -> Result<&str, &str> {
+    if message.contains("stupid") || message.is_empty() {
+        Err("ERROR: illegal")
+    } else {
+        Ok(message)
+    }
+}
