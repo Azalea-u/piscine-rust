@@ -10,7 +10,6 @@ pub fn expected_variable(compare: &str, expected: &str) -> Option<String> {
     }
 
     let distance = edit_distance(&compare, &expected);
-
     let percentage = 100 - (distance * 100 / expected.len()).min(100);
     if percentage >= 50 {
         Some(format!("{percentage}%"))
@@ -18,3 +17,4 @@ pub fn expected_variable(compare: &str, expected: &str) -> Option<String> {
         None
     }
 }
+
