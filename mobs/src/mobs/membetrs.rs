@@ -1,10 +1,11 @@
-#[derive(Debug, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Member {
+    pub name: String,
     pub role: Role,
-    pub age: u32,
+    pub age: u8,
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Copy)]
 pub enum Role {
     Underboss,
     Caporegime,
@@ -12,28 +13,30 @@ pub enum Role {
     Associate,
 }
 
-impl Role {
-    pub fn get_power(&self) -> usize {
-        match self {
-            Role::Associate => 1,
-            Role::Soldier => 2,
-            Role::Caporegime => 3,
-            Role::Underboss => 4,
+impl Member {
+    pub fn new(name: &str, role: Role, age: u8) -> Member {
+        Member {
+            name: name.to_string(),
+            role,
+            age,
         }
     }
-}
-
-impl Member {
-    pub fn new(age: u32) -> Member {
-        Member { role: Role::Associate, age }
-    }
-
     pub fn get_promotion(&mut self) {
         match self.role {
             Role::Associate => self.role = Role::Soldier,
             Role::Soldier => self.role = Role::Caporegime,
             Role::Caporegime => self.role = Role::Underboss,
-            _ => panic!("Impossibility"),
+            _ => {}
+        }
+    }
+}
+impl Role {
+    pub fn power(&self) -> u8 {
+        match self {
+            Role::Associate => 1,
+            Role::Soldier => 2,
+            Role::Caporegime => 3,
+            Role::Underboss => 4,
         }
     }
 }
