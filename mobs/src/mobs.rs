@@ -1,8 +1,7 @@
 pub mod boss;
-pub mod member;
-
+pub mod members;
 pub use boss::Boss;
-pub use member::Member;
+pub use members::Member;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Mob {
@@ -16,7 +15,7 @@ pub struct Mob {
 impl Mob {
     pub fn recruit(&mut self, name: &str, age: u8) {
         self.members
-            .push(Member::new(name, member::Role::Associate, age))
+            .push(Member::new(name, members::Role::Associate, age))
     }
     pub fn attack(&mut self, mob: &mut Mob) {
         let pw_self: u8 = self.members.iter().map(|m| m.role.power()).sum();
