@@ -1,3 +1,7 @@
+use stars::stars;
+
 fn main() {
-    println!("Hello, world!");
+    println!("{}", stars(1));
+    println!("{}", stars(4));
+    println!("{}", stars(5));
 }
