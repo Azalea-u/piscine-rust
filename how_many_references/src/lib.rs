@@ -1,4 +1,4 @@
-use std::rc::Rc;
+pub use std::rc::Rc;
 
 pub struct Node {
     pub ref_list: Vec<Rc<String>>,
@@ -12,7 +12,7 @@ impl Node {
         self.ref_list.push(elem);
     }
     pub fn rm_all_ref(&mut self, elem: Rc<String>) {
-        self.ref_list.retain(|x| Rc::ptr_eq(x, &elem));
+        self.ref_list.retain(|x| !Rc::ptr_eq(x, &elem));
     }
 }
 
