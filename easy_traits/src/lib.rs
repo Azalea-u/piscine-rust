@@ -11,11 +11,11 @@ pub trait AppendStr {
 
 impl AppendStr for StringValue {
     fn append_str(&mut self, str_to_append: String) -> Self {
-        self.value = self.value + &str_to_append;
+        self.value = self.value.clone() + &str_to_append;
         self.clone()
     }
     fn append_number(&mut self, nb_to_append: f64) -> Self {
-        self.value = self.value + &nb_to_append.to_string();
+        self.value = self.value.clone() + &nb_to_append.to_string();
         self.clone()
     }
     fn remove_punctuation_marks(&mut self) -> Self {
