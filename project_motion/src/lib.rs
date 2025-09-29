@@ -43,9 +43,13 @@ impl Iterator for ThrowObject {
             return None;
         }
 
-        self.actual_velocity = Object { x: vx, y: vy };
-        self.actual_position = Object { x, y };
+        self.actual_velocity = Object { x: round(vx), y: round(vy) };
+        self.actual_position = Object { x: round(x), y: round(y) };
 
         Some(self.clone())
     }
+}
+
+fn round(x: f32) -> f32 {
+    (x * 100.0).round() / 100.0
 }
